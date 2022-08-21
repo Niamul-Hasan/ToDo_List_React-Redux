@@ -5,8 +5,8 @@ import { ADDED, AllCOMPLETED, CLEARCOMPLETED, COLORSELECTED, TOGOLED, DELETED } 
 const Reducer = (state = initialState, action) => {
 
     const nextTodoId = (todos) => {
-        const maxId = todos.reducer((maxId, todo) => Math.max(todo.id, maxId), -1);
-        return maxId;
+        const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1);
+        return maxId + 1;
     }
     switch (action.type) {
         case ADDED:
@@ -14,7 +14,9 @@ const Reducer = (state = initialState, action) => {
             return [
                 ...state,
                 {
-                    id: nextTodoId(state)
+                    id: nextTodoId(state),
+                    text: action.payload,
+                    completed: false,
                 }
             ];
         case TOGOLED:
