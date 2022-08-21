@@ -5,7 +5,7 @@ import Footer from "./Components/Footer";
 function App() {
   return (
     <div
-      className="grid place-items-center bg-blue-100 h-screen px-6 font-sans"
+      className="grid place-items-center bg-teal-100 h-screen px-6 font-sans"
     >
       <Navbar />
 
