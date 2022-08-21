@@ -1,5 +1,4 @@
-import React from 'react';
-import initialState from './InitialState';
+import { initialState } from './InitialState';
 import { ADDED, AllCOMPLETED, CLEARCOMPLETED, COLORSELECTED, TOGOLED, DELETED } from './ActionTypes';
 
 
@@ -46,12 +45,15 @@ const Reducer = (state = initialState, action) => {
                     ...todo,
                     completed: true,
                 }
-            })
+            });
+
+        case CLEARCOMPLETED:
+            return state.filter(todo => !todo.completed);
 
         case DELETED:
             return state.filter(todo => todo.id !== action.payload);
         default:
-            break;
+            return state;
     }
 
 };
